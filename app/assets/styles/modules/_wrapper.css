@@ -16,6 +16,26 @@
             margin-bottom: 3.875rem;
         }
     }
+
+    &__no-padding-u-medium {
+        padding-left: 0;
+        padding-right: 0;
+
+        @mixin atMedium {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+    }
+
+    &__no-padding-u-large {
+        padding-left: 0;
+        padding-right: 0;
+
+        @mixin atLarge {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+    }
     
     .wrapper {
         padding-left: 0;

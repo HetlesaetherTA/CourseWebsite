@@ -18,6 +18,8 @@
         margin-right: auto;
         
         @mixin atSmall {
+            position: relative;
+            top: 8px;
             margin-bottom: 0;
             display:inline-block;
             margin-right: .5rem;
@@ -25,5 +27,14 @@
         }
     }
 
+    &__blue {
+        color: $mainBlue
+    }
 
+    &__reduce-b-margin-large {
+        margin-bottom: 0px;
+        @mixin atLarge {
+        margin-bottom: 60px;
+        }
+    }
 }

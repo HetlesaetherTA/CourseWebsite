@@ -3,7 +3,7 @@
         line-height: 1.65;
         font-size: 1.125rem;
         margin: 0 0 1.8rem 0;
-        font-weight: 200;
+        font-weight: 350;
     }
 
     @mixin atSmall {
