@@ -20,4 +20,10 @@
     &__large:hover {
         background-color: $hoverOrange;
     }
+
+    &__footer {
+        @mixin atMedium {
+            margin-left: 2.5rem;
+        }
+    }
 }
