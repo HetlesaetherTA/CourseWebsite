@@ -27,7 +27,6 @@ class ReavelOnScroll {
     }
 
     calculateIfScrolledTo(element) {
-        console.log(this.browserHeight);
         if (window.scrollY + this.browserHeight > element.offsetTop) {
             let scrollPercent = (element.getBoundingClientRect().top / this.browserHeight) * 100
             if (scrollPercent < this.thresholdPercent) {
