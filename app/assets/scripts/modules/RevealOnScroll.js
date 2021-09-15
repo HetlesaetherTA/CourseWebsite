@@ -1,33 +1,51 @@
 import throttle from "lodash/throttle"
+import debounce from "lodash/debounce"
 
 class ReavelOnScroll {
-    constructor() {
-        this.itemsToReavel = document.querySelectorAll(".feature-item")
-        this.hideInitially()
+    constructor(elements, thresholdPercent) {
+        this.itemsToReavel = elements
         this.scrollThrottle = throttle(this.calcCaller, 200).bind(this)
+        this.hideInitially()
+        this.browserHeight = window.innerHeight;
+        this.thresholdPercent = thresholdPercent;
         this.events()
     }
 
     events() {
-        window.addEventListener("scroll", this.scrollThrottle)
+        window.addEventListener("scroll", this.scrollThrottle);
+        window.addEventListener("resize", debounce(() => {
+            this.browserHeight = window.innerHeight
+        }, 333))
     }
 
     calcCaller() {
         this.itemsToReavel.forEach(element => {
-            this.calculateIfScrolledTo(element)
+            if (element.isRevealed == false) {
+                this.calculateIfScrolledTo(element);
+            }
         })
     }
 
     calculateIfScrolledTo(element) {
-        console.log("element calc")
-        let scrollPercent = (element.getBoundingClientRect().top / window.innerHeight) * 100
-        if (scrollPercent < 75) {
-            element.classList.add("reveal-item__is-visible");
+        console.log(this.browserHeight);
+        if (window.scrollY + this.browserHeight > element.offsetTop) {
+            let scrollPercent = (element.getBoundingClientRect().top / this.browserHeight) * 100
+            if (scrollPercent < this.thresholdPercent) {
+                element.classList.add("reveal-item__is-visible");
+                element.isRevealed = true;
+                if (element.isLastItem) {
+                    window.removeEventListener("scroll", this.scrollThrottle)
+                }
+            }
         }
     } 
 
     hideInitially () {
-        this.itemsToReavel.forEach(element => element.classList.add("reveal-item"))
+        this.itemsToReavel.forEach(element => {
+            element.classList.add("reveal-item");
+            element.isRevealed = false;
+        })
+        this.itemsToReavel[this.itemsToReavel.length - 1].isLastItem = true;
     }
 }
 
