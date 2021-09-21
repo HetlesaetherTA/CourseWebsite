@@ -35,17 +35,15 @@
         }
     }
 
-    &__color-white {
-        color: white;
-        font-weight: 300;
-    }
-
+    
     &__v-center {
         display: block;
         padding: 12px 0;
     }
-
+    
     a {
+        font-weight: 300;
+        color: #fff;
         padding: 5px 8px;
         font-size: 0.8rem;
         background-color: rgba(47, 85, 114, 0.5);
@@ -54,6 +52,10 @@
             font-size: 1rem;
             padding: 12px 0;
             background-color: transparent;
+
+            &.is-current-link {
+                color: #fabb69;
+            }
         }
     }
 }
