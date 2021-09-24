@@ -19,4 +19,8 @@
         opacity: 100;
 
     }
+
+    &__error {
+        color: red;
+    }
 }

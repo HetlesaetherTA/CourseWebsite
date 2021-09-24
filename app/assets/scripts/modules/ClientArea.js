@@ -19,11 +19,11 @@ class ClientArea {
     }
 
     sendRequest() {
-        axios.post("https://serene-lamarr-3c2b21.netlify.app/.netlify/functions/ppa", b).then(response => {
+        axios.post("https://serene-lamarr-3c2b21.netlify.app/.netlify/functions/ppa", {password: this.field.value}).then(response => {
             this.form.remove()
             this.contentArea.innerHTML = response.data
         }).catch(() => {
-            this.contentArea.innerHTML = `<p class=""client-area__error>Incorrect Password</p>`
+            this.contentArea.innerHTML = `<p class="client-area__error">Incorrect Password</p>`
             this.field.value = ""
             this.field.focus()
         })
