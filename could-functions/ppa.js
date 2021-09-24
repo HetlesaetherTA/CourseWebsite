@@ -1,10 +1,10 @@
 // Netlify, postman
 
-let rank = "Super user or Owner";
+let rank = "Super User or Owner";
 
 exports.handler = function(event, context, callback) {
     const secretContent = `
-    <h3>Server Side Terminal Activated</h3>
+    <h3>Client Area</h3>
     <p>Permission rank: ${rank}</p>
     `
     let body;
